@@ -9,6 +9,7 @@ class Bullet:
     x_cord: int
     y_cord: int
     speed: int = 50
+    life: int = 30
 
 class Bullets:
     bullets: list[Bullet] = []
@@ -34,4 +35,8 @@ class Bullets:
                 updated_location = bullet.x_cord + 30
                 bullet.x_cord = updated_location
             pygame.draw.circle(win, (255, 255, 255), (bullet.x_cord, bullet.y_cord), self.bullet_size)
+            bullet.life -= 1
+
+            if bullet.life == 0:
+                self.bullets.remove(bullet)
 
